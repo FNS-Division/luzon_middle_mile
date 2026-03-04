@@ -36,10 +36,12 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
         <script src="data/submarine_cables_1.js"></script>
-        <script src="data/current_backbone_2.js"></script>
-        <script src="data/middle_mile_3.js"></script>
-        <script src="data/last_mile_4.js"></script>
-        <script src="data/targets_5.js"></script>
+        <script src="data/fiber_coverageOokla_2.js"></script>
+        <script src="data/coverage_5g_4.js"></script>
+        <script src="data/current_backbone_5.js"></script>
+        <script src="data/middle_mile_6.js"></script>
+        <script src="data/last_mile_7.js"></script>
+        <script src="data/targets_8.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:20, minZoom:1
@@ -184,7 +186,106 @@
         });
         bounds_group.addLayer(layer_submarine_cables_1);
         map.addLayer(layer_submarine_cables_1);
-        function pop_current_backbone_2(feature, layer) {
+        function pop_fiber_coverageOokla_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['index'] !== null ? autolinker.link(String(feature.properties['index']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_fiber_coverageOokla_2_0() {
+            return {
+                pane: 'pane_fiber_coverageOokla_2',
+                opacity: 1,
+                color: 'rgba(247,225,55,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,255,253,0.5)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_fiber_coverageOokla_2');
+        map.getPane('pane_fiber_coverageOokla_2').style.zIndex = 402;
+        map.getPane('pane_fiber_coverageOokla_2').style['mix-blend-mode'] = 'normal';
+        var layer_fiber_coverageOokla_2 = new L.geoJson(json_fiber_coverageOokla_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_fiber_coverageOokla_2',
+            layerName: 'layer_fiber_coverageOokla_2',
+            pane: 'pane_fiber_coverageOokla_2',
+            onEachFeature: pop_fiber_coverageOokla_2,
+            style: style_fiber_coverageOokla_2_0,
+        });
+        bounds_group.addLayer(layer_fiber_coverageOokla_2);
+        map.createPane('pane_population_counts_3');
+        map.getPane('pane_population_counts_3').style.zIndex = 403;
+        var img_population_counts_3 = 'data/population_counts_3.png';
+        var img_bounds_population_counts_3 = [[7.506485300379705,116.93333214641818],[21.06666691805889,125.22144746769068]];
+        var layer_population_counts_3 = new L.imageOverlay(img_population_counts_3,
+                                              img_bounds_population_counts_3,
+                                              {pane: 'pane_population_counts_3'});
+        bounds_group.addLayer(layer_population_counts_3);
+        function pop_coverage_5g_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DN'] !== null ? autolinker.link(String(feature.properties['DN']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['radio_type'] !== null ? autolinker.link(String(feature.properties['radio_type']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_coverage_5g_4_0() {
+            return {
+                pane: 'pane_coverage_5g_4',
+                opacity: 1,
+                color: 'rgba(247,225,55,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,89,137,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_coverage_5g_4');
+        map.getPane('pane_coverage_5g_4').style.zIndex = 404;
+        map.getPane('pane_coverage_5g_4').style['mix-blend-mode'] = 'normal';
+        var layer_coverage_5g_4 = new L.geoJson(json_coverage_5g_4, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_coverage_5g_4',
+            layerName: 'layer_coverage_5g_4',
+            pane: 'pane_coverage_5g_4',
+            onEachFeature: pop_coverage_5g_4,
+            style: style_coverage_5g_4_0,
+        });
+        bounds_group.addLayer(layer_coverage_5g_4);
+        function pop_current_backbone_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -203,11 +304,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_current_backbone_2_0(feature) {
+        function style_current_backbone_5_0(feature) {
             switch(String(feature.properties['operator_type'])) {
                 case 'private':
                     return {
-                pane: 'pane_current_backbone_2',
+                pane: 'pane_current_backbone_5',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -220,7 +321,7 @@
                     break;
                 case 'public':
                     return {
-                pane: 'pane_current_backbone_2',
+                pane: 'pane_current_backbone_5',
                 opacity: 1,
                 color: 'rgba(141,90,153,1.0)',
                 dashArray: '',
@@ -233,21 +334,21 @@
                     break;
             }
         }
-        map.createPane('pane_current_backbone_2');
-        map.getPane('pane_current_backbone_2').style.zIndex = 402;
-        map.getPane('pane_current_backbone_2').style['mix-blend-mode'] = 'normal';
-        var layer_current_backbone_2 = new L.geoJson(json_current_backbone_2, {
+        map.createPane('pane_current_backbone_5');
+        map.getPane('pane_current_backbone_5').style.zIndex = 405;
+        map.getPane('pane_current_backbone_5').style['mix-blend-mode'] = 'normal';
+        var layer_current_backbone_5 = new L.geoJson(json_current_backbone_5, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_current_backbone_2',
-            layerName: 'layer_current_backbone_2',
-            pane: 'pane_current_backbone_2',
-            onEachFeature: pop_current_backbone_2,
-            style: style_current_backbone_2_0,
+            dataVar: 'json_current_backbone_5',
+            layerName: 'layer_current_backbone_5',
+            pane: 'pane_current_backbone_5',
+            onEachFeature: pop_current_backbone_5,
+            style: style_current_backbone_5_0,
         });
-        bounds_group.addLayer(layer_current_backbone_2);
-        map.addLayer(layer_current_backbone_2);
-        function pop_middle_mile_3(feature, layer) {
+        bounds_group.addLayer(layer_current_backbone_5);
+        map.addLayer(layer_current_backbone_5);
+        function pop_middle_mile_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -260,9 +361,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_middle_mile_3_0() {
+        function style_middle_mile_6_0() {
             return {
-                pane: 'pane_middle_mile_3',
+                pane: 'pane_middle_mile_6',
                 opacity: 1,
                 color: 'rgba(0,112,188,1.0)',
                 dashArray: '',
@@ -273,21 +374,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_middle_mile_3');
-        map.getPane('pane_middle_mile_3').style.zIndex = 403;
-        map.getPane('pane_middle_mile_3').style['mix-blend-mode'] = 'darken';
-        var layer_middle_mile_3 = new L.geoJson(json_middle_mile_3, {
+        map.createPane('pane_middle_mile_6');
+        map.getPane('pane_middle_mile_6').style.zIndex = 406;
+        map.getPane('pane_middle_mile_6').style['mix-blend-mode'] = 'darken';
+        var layer_middle_mile_6 = new L.geoJson(json_middle_mile_6, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_middle_mile_3',
-            layerName: 'layer_middle_mile_3',
-            pane: 'pane_middle_mile_3',
-            onEachFeature: pop_middle_mile_3,
-            style: style_middle_mile_3_0,
+            dataVar: 'json_middle_mile_6',
+            layerName: 'layer_middle_mile_6',
+            pane: 'pane_middle_mile_6',
+            onEachFeature: pop_middle_mile_6,
+            style: style_middle_mile_6_0,
         });
-        bounds_group.addLayer(layer_middle_mile_3);
-        map.addLayer(layer_middle_mile_3);
-        function pop_last_mile_4(feature, layer) {
+        bounds_group.addLayer(layer_middle_mile_6);
+        map.addLayer(layer_middle_mile_6);
+        function pop_last_mile_7(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -321,9 +422,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_last_mile_4_0() {
+        function style_last_mile_7_0() {
             return {
-                pane: 'pane_last_mile_4',
+                pane: 'pane_last_mile_7',
                 opacity: 1,
                 color: 'rgba(0,0,4,1.0)',
                 dashArray: '',
@@ -334,21 +435,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_last_mile_4');
-        map.getPane('pane_last_mile_4').style.zIndex = 404;
-        map.getPane('pane_last_mile_4').style['mix-blend-mode'] = 'normal';
-        var layer_last_mile_4 = new L.geoJson(json_last_mile_4, {
+        map.createPane('pane_last_mile_7');
+        map.getPane('pane_last_mile_7').style.zIndex = 407;
+        map.getPane('pane_last_mile_7').style['mix-blend-mode'] = 'normal';
+        var layer_last_mile_7 = new L.geoJson(json_last_mile_7, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_last_mile_4',
-            layerName: 'layer_last_mile_4',
-            pane: 'pane_last_mile_4',
-            onEachFeature: pop_last_mile_4,
-            style: style_last_mile_4_0,
+            dataVar: 'json_last_mile_7',
+            layerName: 'layer_last_mile_7',
+            pane: 'pane_last_mile_7',
+            onEachFeature: pop_last_mile_7,
+            style: style_last_mile_7_0,
         });
-        bounds_group.addLayer(layer_last_mile_4);
-        map.addLayer(layer_last_mile_4);
-        function pop_targets_5(feature, layer) {
+        bounds_group.addLayer(layer_last_mile_7);
+        map.addLayer(layer_last_mile_7);
+        function pop_targets_8(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">poi_type</th>\
@@ -370,11 +471,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_targets_5_0(feature) {
+        function style_targets_8_0(feature) {
             switch(String(feature.properties['technology'])) {
                 case 'fiber':
                     return {
-                pane: 'pane_targets_5',
+                pane: 'pane_targets_8',
                 radius: 3.5,
                 opacity: 1,
                 color: 'rgba(0,0,0,0.8)',
@@ -390,7 +491,7 @@
                     break;
                 case 'p2area':
                     return {
-                pane: 'pane_targets_5',
+                pane: 'pane_targets_8',
                 radius: 3.5,
                 opacity: 1,
                 color: 'rgba(0,0,0,0.8)',
@@ -406,7 +507,7 @@
                     break;
                 case 'satellite':
                     return {
-                pane: 'pane_targets_5',
+                pane: 'pane_targets_8',
                 radius: 3.5,
                 opacity: 1,
                 color: 'rgba(0,0,0,0.8)',
@@ -422,31 +523,34 @@
                     break;
             }
         }
-        map.createPane('pane_targets_5');
-        map.getPane('pane_targets_5').style.zIndex = 405;
-        map.getPane('pane_targets_5').style['mix-blend-mode'] = 'normal';
-        var layer_targets_5 = new L.geoJson(json_targets_5, {
+        map.createPane('pane_targets_8');
+        map.getPane('pane_targets_8').style.zIndex = 408;
+        map.getPane('pane_targets_8').style['mix-blend-mode'] = 'normal';
+        var layer_targets_8 = new L.geoJson(json_targets_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_targets_5',
-            layerName: 'layer_targets_5',
-            pane: 'pane_targets_5',
-            onEachFeature: pop_targets_5,
+            dataVar: 'json_targets_8',
+            layerName: 'layer_targets_8',
+            pane: 'pane_targets_8',
+            onEachFeature: pop_targets_8,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_targets_5_0(feature));
+                return L.circleMarker(latlng, style_targets_8_0(feature));
             },
         });
-        bounds_group.addLayer(layer_targets_5);
-        map.addLayer(layer_targets_5);
+        bounds_group.addLayer(layer_targets_8);
+        map.addLayer(layer_targets_8);
         var overlaysTree = [
-            {label: 'targets<br /><table><tr><td style="text-align: center;"><img src="legend/targets_5_fiber0.png" /></td><td>fiber</td></tr><tr><td style="text-align: center;"><img src="legend/targets_5_5G1.png" /></td><td>5G</td></tr><tr><td style="text-align: center;"><img src="legend/targets_5_satellite2.png" /></td><td>satellite</td></tr></table>', layer: layer_targets_5},
-            {label: '<img src="legend/last_mile_4.png" /> last_mile', layer: layer_last_mile_4},
-            {label: '<img src="legend/middle_mile_3.png" /> middle_mile', layer: layer_middle_mile_3},
-            {label: 'current_backbone<br /><table><tr><td style="text-align: center;"><img src="legend/current_backbone_2_private0.png" /></td><td>private</td></tr><tr><td style="text-align: center;"><img src="legend/current_backbone_2_public1.png" /></td><td>public</td></tr></table>', layer: layer_current_backbone_2},
+            {label: 'targets<br /><table><tr><td style="text-align: center;"><img src="legend/targets_8_fiber0.png" /></td><td>fiber</td></tr><tr><td style="text-align: center;"><img src="legend/targets_8_5G1.png" /></td><td>5G</td></tr><tr><td style="text-align: center;"><img src="legend/targets_8_satellite2.png" /></td><td>satellite</td></tr></table>', layer: layer_targets_8},
+            {label: '<img src="legend/last_mile_7.png" /> last_mile', layer: layer_last_mile_7},
+            {label: '<img src="legend/middle_mile_6.png" /> middle_mile', layer: layer_middle_mile_6},
+            {label: 'current_backbone<br /><table><tr><td style="text-align: center;"><img src="legend/current_backbone_5_private0.png" /></td><td>private</td></tr><tr><td style="text-align: center;"><img src="legend/current_backbone_5_public1.png" /></td><td>public</td></tr></table>', layer: layer_current_backbone_5},
+            {label: '<img src="legend/coverage_5g_4.png" /> coverage_5g', layer: layer_coverage_5g_4},
+            {label: "population_counts", layer: layer_population_counts_3},
+            {label: '<img src="legend/fiber_coverageOokla_2.png" /> fiber_coverage (Ookla)', layer: layer_fiber_coverageOokla_2},
             {label: '<img src="legend/submarine_cables_1.png" /> submarine_cables', layer: layer_submarine_cables_1},
             {label: "Esri World Topographic", layer: layer_EsriWorldTopographic_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
@@ -510,6 +614,11 @@
             }  
         });       
         setBounds();
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
         </script>        
     </body>
 </html>
