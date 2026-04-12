@@ -43,7 +43,7 @@
         <script src="data/Stage1Fiber_5.js"></script>
         <script src="data/Stage2Fiber_6.js"></script>
         <script src="data/DICTNetworkNodes_7.js"></script>
-        <script src="data/Stage3AccessNetwork3KmBuffer_8.js"></script>
+        <script src="data/Stage33KmBuffer_8.js"></script>
         <script src="data/AllTargets_9.js"></script>
         <script src="data/TargetsConstrainedScenario_10.js"></script>
         <script>
@@ -479,7 +479,7 @@
         });
         bounds_group.addLayer(layer_DICTNetworkNodes_7);
         map.addLayer(layer_DICTNetworkNodes_7);
-        function pop_Stage3AccessNetwork3KmBuffer_8(feature, layer) {
+        function pop_Stage33KmBuffer_8(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -498,9 +498,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Stage3AccessNetwork3KmBuffer_8_0() {
+        function style_Stage33KmBuffer_8_0() {
             return {
-                pane: 'pane_Stage3AccessNetwork3KmBuffer_8',
+                pane: 'pane_Stage33KmBuffer_8',
                 opacity: 1,
                 color: 'rgba(53,121,177,1.0)',
                 dashArray: '',
@@ -511,19 +511,19 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Stage3AccessNetwork3KmBuffer_8');
-        map.getPane('pane_Stage3AccessNetwork3KmBuffer_8').style.zIndex = 408;
-        map.getPane('pane_Stage3AccessNetwork3KmBuffer_8').style['mix-blend-mode'] = 'normal';
-        var layer_Stage3AccessNetwork3KmBuffer_8 = new L.geoJson(json_Stage3AccessNetwork3KmBuffer_8, {
+        map.createPane('pane_Stage33KmBuffer_8');
+        map.getPane('pane_Stage33KmBuffer_8').style.zIndex = 408;
+        map.getPane('pane_Stage33KmBuffer_8').style['mix-blend-mode'] = 'normal';
+        var layer_Stage33KmBuffer_8 = new L.geoJson(json_Stage33KmBuffer_8, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Stage3AccessNetwork3KmBuffer_8',
-            layerName: 'layer_Stage3AccessNetwork3KmBuffer_8',
-            pane: 'pane_Stage3AccessNetwork3KmBuffer_8',
-            onEachFeature: pop_Stage3AccessNetwork3KmBuffer_8,
-            style: style_Stage3AccessNetwork3KmBuffer_8_0,
+            dataVar: 'json_Stage33KmBuffer_8',
+            layerName: 'layer_Stage33KmBuffer_8',
+            pane: 'pane_Stage33KmBuffer_8',
+            onEachFeature: pop_Stage33KmBuffer_8,
+            style: style_Stage33KmBuffer_8_0,
         });
-        bounds_group.addLayer(layer_Stage3AccessNetwork3KmBuffer_8);
+        bounds_group.addLayer(layer_Stage33KmBuffer_8);
         function pop_AllTargets_9(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -548,11 +548,11 @@
                 pane: 'pane_AllTargets_9',
                 radius: 4.0,
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1,
+                weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,255,255,1.0)',
@@ -582,9 +582,6 @@
         function pop_TargetsConstrainedScenario_10(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['poi_id'] !== null ? autolinker.link(String(feature.properties['poi_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
@@ -610,7 +607,7 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(232,113,141,1.0)',
+                fillColor: 'rgba(243,166,178,1.0)',
                 interactive: false,
             }
         }
@@ -637,7 +634,7 @@
         var overlaysTree = [
             {label: '<img src="legend/TargetsConstrainedScenario_10.png" /> Targets (Constrained Scenario)', layer: layer_TargetsConstrainedScenario_10},
             {label: '<img src="legend/AllTargets_9.png" /> All Targets', layer: layer_AllTargets_9},
-            {label: '<img src="legend/Stage3AccessNetwork3KmBuffer_8.png" /> Stage 3 Access Network (3 Km Buffer)', layer: layer_Stage3AccessNetwork3KmBuffer_8},
+            {label: '<img src="legend/Stage33KmBuffer_8.png" /> Stage 3 (3 Km Buffer)', layer: layer_Stage33KmBuffer_8},
             {label: '<img src="legend/DICTNetworkNodes_7.png" /> DICT Network Nodes', layer: layer_DICTNetworkNodes_7},
             {label: '<img src="legend/Stage2Fiber_6.png" /> Stage 2 Fiber', layer: layer_Stage2Fiber_6},
             {label: '<img src="legend/Stage1Fiber_5.png" /> Stage 1 Fiber', layer: layer_Stage1Fiber_5},
